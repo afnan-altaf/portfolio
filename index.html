@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Afnan Altaf - Ambitious freelancer skilled in blogging, store advertising, e-services selling, and site building. Experienced in WordPress, Daraz.pk launches, SMM, and HTML basics.">
+  <title>Afnan Altaf | Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      transition: background 0.5s;
+    }
+
+    .light-mode { 
+      background: #f8f8f8; 
+      color: #000; 
+    }
+    .light-mode .container { background: #fff; }
+    .light-mode .left-tab { background: rgba(0,0,0,0.05); }
+    .light-mode .right-tab { background: #fffde7; color: #000; }
+    .light-mode form input, .light-mode form textarea { background: #fff; color: #000; }
+
+    .container {
+      max-width: 1300px;
+      margin: 40px auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 50px;
+      background: linear-gradient(to bottom right, #000, #111);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: #ff9800;
+      clip-path: polygon(100% 0, 100% 100%, 0 0);
+      opacity: 0.8;
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 200px; height: 200px;
+      background: #ff9800;
+      clip-path: polygon(0 100%, 100% 100%, 0 0);
+      opacity: 0.6;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    .photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+      float: right;
+      margin-left: 30px;
+      box-shadow: 0 0 30px rgba(255,152,0,0.5);
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    .cnic {
+      font-size: 1.4rem;
+      color: #ff9800;
+    }
+
+    .cnic::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: #ff9800;
+      margin-top: 10px;
+    }
+
+    .-btn, #theme-toggle {
+      background: #ff9800;
+      color: #000;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .left-col, .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      z-index: 2;
+    }
+
+    .left-tab, .right-tab {
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .right-tab { background: #fff8e1; color: #000; }
+
+    .tab-title {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .right-tab .tab-title { background: #ff9800; }
+
+    .stars { color: #ffd700; font-size: 1.4rem; letter-spacing: 4px; }
+
+    .job-item {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255,152,0,0.1);
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .job-item:hover { background: rgba(255,152,0,0.2); transform: translateX(10px); }
+
+    details { margin-top: 10px; }
+    summary { cursor: pointer; color: #ff9800; }
+
+    /* Fixed Form Styles */
+    form { margin-top: 20px; }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ff9800;
+      background: rgba(255,255,255,0.15);
+      color: #000; /* Changed to black text */
+      font-size: 16px;
+    }
+
+    form input::placeholder, form textarea::placeholder {
+      color: #666; /* Dark gray placeholder */
+    }
+
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #ff9800;
+      background: rgba(255,255,255,0.2);
+      color: #000;
+    }
+
+    form button {
+      background: #ff9800;
+      color: #000;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    form button:hover {
+      background: #e68900;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .left-tab:nth-child(1) { animation-delay: 0.2s; }
+    .left-tab:nth-child(2) { animation-delay: 0.4s; }
+    .left-tab:nth-child(3) { animation-delay: 0.6s; }
+
+    @media (max-width: 968px) {
+      .container { grid-template-columns: 1fr; padding: 20px; }
+      .photo { float: none; display: block; margin: 20px auto; width: 200px; height: 200px; }
+      h1 { font-size: 3rem; text-align: center; }
+      .container::before, .container::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEim1NaBNhrwZRfeLYEdRrRP-DZhXCLthd-ZW8ao8gERyfD7w5F7cEyOAm2zAHD1hw14cI_gXYEdeQveCUJ1CoeharQFfRSVnvnsT9Z1qvIOhFVuIWg_4Ts0QCSka6AQjYQF7xLvVbTrIg94DiilZhkS6qpggWsyRbIphom-zpVj_FZfVydE42o4am4sLcip/s1024/WhatsApp%20Image%202025-12-11%20at%205.05.47%20PM.jpeg" alt="Afnan Altaf" class="photo">
+    <h1>Afnan Altaf</h1>
+    <div class="cnic">38401-9886927-5</div>
+   <a href="https://github.com/afnan-altaf/Portfolio/releases/download/Self/Portfolio.pdf" download class="download-btn">Download CV</a>
+   <button id="theme-toggle" style="margin-left:20px;">🌙</button>
+  </header>
+
+  <div class="left-col">
+    <div class="left-tab">
+      <div class="tab-title">• contact</div>
+      <p>📞 +92-313-333-1514</p>
+      <p>✉️ afnanaltafjamber@gmail.com</p>
+      <p>📍 AfnanJamber, Soan Garden</p>
+      <p>🔗 WhatsApp: <a href="https://jambertech.short.gy/" target="_blank" style="color:#ff9800;">jambertech.short.gy</a></p>
+    </div>
+
+    <div class="left-tab">
+      <div class="tab-title">• Skills</div>
+      <p>Blogger <span class="stars">★★★★★</span></p>
+      <p>Store Advertiser <span class="stars">★★★★★</span></p>
+      <p>E-Services Seller <span class="stars">★★★★★</span></p>
+      <p>Site Builder <span class="stars">★★★★★</span></p>
+    </div>
+
+    <div class="left-tab">
+      <div class="tab-title">• Language</div>
+      <p>• Punjabi</p>
+      <p>• Urdu</p>
+      <p>• English</p>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="right-tab">
+      <div class="tab-title">• Profile</div>
+      <p>I am a talented, ambitious and hardworking individual, with broad skills and experience in various Professions.</p>
+    </div>
+
+    <div class="right-tab">
+      <div class="tab-title">• Work Experience</div>
+      <div class="job-item"><strong>Blogger-Wordpress Posts Manager</strong> AH Mobile & Refrigeration | 2021 - 3 Dec 2023<br>Collaborated with Company Owner And Manage Their Sites To Manage Their Softwares Sales.</div>
+      <div class="job-item"><strong>Store Advertiser</strong> Electricstore.pk Soan Garden | 4 Dec 2023 - August 2024<br>Collaborated with Store to Build Their Online And In-Area Presence. Launched Online Store On Daraz.pk</div>
+      <div class="job-item"><strong>E-Services Seller</strong> Self Employed | August 2024 - Ongoing<br>Collaborated with Local Stores In MIANI, Sargodha. Sell SMM services, Udemy Courses And Accounts, Learn Html Basics</div>
+      <div class="job-item"><strong>Point of Sale Operator</strong> | 10 Feb 2025 - 10 May 2025<br>Handled daily transactions, cash handling, inventory & customer service using POS systems.</div>
+    </div>
+
+    <div class="right-tab">
+      <div class="tab-title">• Education</div>
+      <p>• Second Year | Go. Miani | In Pending</p>
+      <p>• First Year | Gc. Miani | Completed</p>
+      <p>• Matriculation | Govt. High School MIANI | Completed</p>
+      <p>• "Basic Computer Course" | K.B.V.T.II | 2021</p>
+    </div>
+
+    <div class="right-tab">
+      <div class="tab-title">• Certifications (Udemy)</div>
+      <details>
+        <summary style="color: #000; font-weight: bold; cursor: pointer;">View all 13 certificates</summary>
+        <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+          <p>• <a href="https://www.udemy.com/certificate/UC-3fdc01d7-e268-48c8-aa6a-4a42c2bff53b/" target="_blank" style="color: #000;">Certificate 1</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-f53bd0ad-adbc-4e43-a406-7acfa3d48f13/" target="_blank" style="color: #000;">Certificate 2</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-8ab9a44f-d979-44b9-b238-dcdaae3a2bb8/" target="_blank" style="color: #000;">Certificate 3</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-9afb9c0a-e77c-4009-b008-73f4a12afee4/" target="_blank" style="color: #000;">Certificate 4</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-71fe1cc7-d2dd-42dd-82ad-f12ff08e3834/" target="_blank" style="color: #000;">Certificate 5</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-62337db5-024e-404c-a260-e8b99016e24d/" target="_blank" style="color: #000;">Certificate 6</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-6d0472f4-804a-40a5-a54f-ec7a8f16f37f/" target="_blank" style="color: #000;">Certificate 7</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-d0877f1c-cc2a-473f-8bb3-7692a30aef2c/" target="_blank" style="color: #000;">Certificate 8</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-96055554-8d6f-41c3-9a3a-2ee526cad227/" target="_blank" style="color: #000;">Certificate 9</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-02dcae19-8de6-4e96-bbe0-bbb2f66584e5/" target="_blank" style="color: #000;">Certificate 10</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-74d9f195-7f25-4354-ab87-92538ff7ccf3/" target="_blank" style="color: #000;">Certificate 11</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-65a9efdc-fcc0-4e0b-a1bc-59106ee488d4" target="_blank" style="color: #000;">Certificate 12</a></p>
+          <p>• <a href="https://www.udemy.com/certificate/UC-b74282bf-d8ac-482d-9857-38ee78d85e14" target="_blank" style="color: #000;">Certificate 13</a></p>
+        </div>
+      </details>
+    </div>
+
+    <div class="right-tab">
+      <div class="tab-title">• Contact Me</div>
+      <form action="https://formspree.io/f/mwverpag" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required rows="5"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const icon = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+    document.getElementById('theme-toggle').textContent = icon;
+  });
+</script>
+
+</body>
+</html>
